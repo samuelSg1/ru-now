@@ -1,0 +1,26 @@
+import React, { Component } from 'react';
+import Avatar from 'material-ui/Avatar';
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import ActionGrade from 'material-ui/svg-icons/action/grade';
+
+export default ({userVotes, showResult, current, handleClick}) => {
+  return (
+    <div>
+      <List>
+        <Subheader>Star Votes</Subheader>
+        {userVotes.slice(0,current).map((vote, key)=>{
+          return(
+            <ListItem
+              key={key}
+              primaryText={vote.name}
+              leftAvatar={<Avatar src={vote.avatar} />}
+              rightIcon={<ActionGrade />}
+            />
+          )
+        })}
+	<ListItem primaryText={<a href="#">Show more</a>} onTouchTap={handleClick.bind(this)} />
+      </List>
+    </div>
+  )
+}
